@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpaceshipManagerApplication {
+public class SpaceShipManagerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpaceshipManagerApplication.class, args);
+		SpringApplication.run(SpaceShipManagerApplication.class, args);
 	}
 
 }
