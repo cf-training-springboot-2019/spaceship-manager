@@ -7,10 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
@@ -21,7 +18,7 @@ import java.math.BigInteger;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SpaceShip {
+public class SpaceShip extends Auditable<String> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +26,7 @@ public class SpaceShip {
 
     @NotNull
     @NotEmpty
+    @Column(unique = true)
     private String name;
 
     @NotNull
@@ -40,6 +38,5 @@ public class SpaceShip {
     @NotNull
     @PositiveOrZero
     private BigInteger maxOccupancy;
-
 
 }

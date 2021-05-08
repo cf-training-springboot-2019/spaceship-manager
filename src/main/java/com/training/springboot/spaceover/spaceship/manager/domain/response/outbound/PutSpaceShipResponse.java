@@ -13,7 +13,7 @@ import java.math.BigInteger;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateSpaceShipResponse {
+public class PutSpaceShipResponse {
 
     private Long id;
 

@@ -39,6 +39,5 @@ Here are the services beans and relationship:
 ```mermaid
 graph LR
 A[SpaceShipController] --> B1(SpaceShipService)
-A --> B2(SpaceShipClientService)
 B1 --> C1(SpaceShipRepository)
 ```
