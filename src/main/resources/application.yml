@@ -4,5 +4,12 @@ spring:
       enabled: true
   datasource:
     url: jdbc:h2:mem:testdb
-
+  data:
+    web:
+      pageable:
+        size-parameter: size
+        page-parameter: page
+        default-page-size: 20
+        one-indexed-parameters: false
+        max-page-size: 100
 
