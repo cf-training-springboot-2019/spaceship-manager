@@ -1,4 +1,14 @@
+application:
+  name: @project.artifactId@
+  description: @project.description@
+  version: @project.version@
+
+server:
+  port: 8080
+
 spring:
+  application:
+    name: spaceship-manager
   h2:
     console:
       enabled: true
@@ -13,3 +23,11 @@ spring:
         one-indexed-parameters: false
         max-page-size: 100
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
