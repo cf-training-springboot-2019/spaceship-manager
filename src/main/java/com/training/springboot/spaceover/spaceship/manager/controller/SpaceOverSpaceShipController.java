@@ -20,6 +20,8 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.*;
 
 @RestController
@@ -61,7 +63,7 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
 
     @Override
     @PostMapping
-    public ResponseEntity createSpaceShip(@RequestBody CreateSpaceShipRequest request) {
+    public ResponseEntity createSpaceShip(@RequestBody @Valid CreateSpaceShipRequest request) {
         SpaceShip spaceShip = spaceShipService.save(modelMapper.map(request, SpaceShip.class));
         return ResponseEntity.created(getResourceUri(spaceShip.getId())).build();
     }
@@ -76,7 +78,7 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
 
     @Override
     @PutMapping(ID_URI)
-    public ResponseEntity<PutSpaceShipResponse> putSpaceShip(@PathVariable("id") Long id, PutSpaceShipRequest request) {
+    public ResponseEntity<PutSpaceShipResponse> putSpaceShip(@PathVariable("id") Long id, @RequestBody @Valid PutSpaceShipRequest request) {
         request.setId(id);
         SpaceShip entity = spaceShipService.update(modelMapper.map(request, SpaceShip.class));
         return ResponseEntity.ok(modelMapper.map(entity, PutSpaceShipResponse.class));
