@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1] - 2021-05-02
 ### Added
+* Global exception handling [#12](https://github.com/cf-training-springboot-2019/spaceship-manager/issues/12)
 * Service contract base implementation [#7](https://github.com/cf-training-springboot-2019/spaceship-manager/issues/7)
 * Service contract definition [#3](https://github.com/cf-training-springboot-2019/spaceship-manager/issues/3)
 * Domain entity model [#2](https://github.com/cf-training-springboot-2019/spaceship-manager/issues/2)
