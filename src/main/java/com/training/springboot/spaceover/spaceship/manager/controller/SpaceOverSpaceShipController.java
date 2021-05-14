@@ -11,12 +11,17 @@ import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipStatus
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipType;
 import com.training.springboot.spaceover.spaceship.manager.service.SpaceShipService;
 import com.training.springboot.spaceover.spaceship.manager.utils.assemblers.PaginationModelAssembler;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +32,7 @@ import static com.training.springboot.spaceover.spaceship.manager.utils.constant
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(SPACESHIPS_URI)
+@Tag(name = SPACESHIPS, description = SPACESHIP_API_DESCRIPTION)
 public class SpaceOverSpaceShipController extends SpaceOverGenericController implements SpaceShipController {
 
     private final SpaceShipService spaceShipService;
@@ -37,10 +43,11 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
 
     private final PaginationModelAssembler modelAssembler;
 
-
     @Override
     @GetMapping
-    public ResponseEntity<PagedModel<GetSpaceShipResponse>> getSpaceShips(Pageable pageable,
+    @PageableAsQueryParam
+    @Operation(summary = GET_SPACESHIPS_SERVICE_OPERATION, description = GET_SPACESHIPS_SERVICE_OPERATION_DESCRIPTION)
+    public ResponseEntity<PagedModel<GetSpaceShipResponse>> getSpaceShips(@Parameter(hidden = true) Pageable pageable,
                                                                           @RequestParam(name = NAME_FIELD, required = false) String name,
                                                                           @RequestParam(name = STATUS_FIELD, required = false) String status,
                                                                           @RequestParam(name = TYPE_FIELD, required = false) String type) {
@@ -54,8 +61,10 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
         return ResponseEntity.ok(response);
     }
 
+
     @Override
     @GetMapping(ID_URI)
+    @Operation(summary = GET_SPACESHIP_SERVICE_OPERATION, description = GET_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
     public ResponseEntity<GetSpaceShipResponse> getSpaceShip(@PathVariable("id") Long id) {
         GetSpaceShipResponse response = modelMapper.map(spaceShipService.findBydId(id), GetSpaceShipResponse.class);
         return ResponseEntity.ok(response);
@@ -63,6 +72,8 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
 
     @Override
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = CREATE_SPACESHIP_SERVICE_OPERATION, description = CREATE_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
     public ResponseEntity createSpaceShip(@RequestBody @Valid CreateSpaceShipRequest request) {
         SpaceShip spaceShip = spaceShipService.save(modelMapper.map(request, SpaceShip.class));
         return ResponseEntity.created(getResourceUri(spaceShip.getId())).build();
@@ -70,6 +81,7 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
 
     @Override
     @PatchMapping(value = ID_URI, consumes = APPLICATION_JSON_PATCH)
+    @Operation(summary = PATCH_SPACESHIP_SERVICE_OPERATION, description = PATCH_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
     public ResponseEntity<PatchSpaceShipResponse> patchSpaceShip(@PathVariable("id") Long id, @RequestBody JsonPatch patch) {
         SpaceShip entity = spaceShipService.findBydId(id);
         entity = spaceShipService.update(applyPatch(patch, entity));
@@ -78,6 +90,7 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
 
     @Override
     @PutMapping(ID_URI)
+    @Operation(summary = PUT_SPACESHIP_SERVICE_OPERATION, description = PUT_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
     public ResponseEntity<PutSpaceShipResponse> putSpaceShip(@PathVariable("id") Long id, @RequestBody @Valid PutSpaceShipRequest request) {
         request.setId(id);
         SpaceShip entity = spaceShipService.update(modelMapper.map(request, SpaceShip.class));
@@ -86,6 +99,8 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
 
     @Override
     @DeleteMapping(ID_URI)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @Operation(summary = DELETE_SPACESHIP_SERVICE_OPERATION, description = DELETE_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
     public ResponseEntity deleteSpaceCrewMember(@PathVariable("id") Long id) {
         spaceShipService.deleteById(id);
         return ResponseEntity.noContent().build();

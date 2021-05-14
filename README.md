@@ -14,9 +14,10 @@ The application uses Spring Boot parent bom version 2.4.5 as its foundation.
 | Name | Description |
 |:----------:|:-------------|
 | getSpaceShips | Synchronous operation that allows the retrieval of multiples persisted space ship member resource entries. |
-| getSpaceShip |  Synchronous operation that allows the retrieval of a single persisted space ship member resource entry. |
+| getSpaceShip |  Synchronous operation that allows the retrieval of multiples persisted space ship member resource entries. |
 | createSpaceShip |  Synchronous operation that allows the persistence of a single space ship member resource entry. |
-| updateSpaceShip| Synchronous operation that allows the update of a single space ship member persisted resource entry. |
+| patchSpaceShip| Synchronous operation that allows the partial update of a single space ship member persisted resource entry. |
+| putSpaceShip| Synchronous operation that allows the full update of a single space ship member persisted resource entry. |
 | deleteSpaceShip | Synchronous operation that allows the removal of a single space ship member persisted resource entry. |
 
 ## Getting Started

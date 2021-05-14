@@ -5,12 +5,12 @@ public class SpaceShipManagerConstant {
     /**
      * Operations
      */
-    public static final String GET_SPACESHIPS_SERVICE_OPERATION = "GetSpaceships";
-    public static final String GET_SPACESHIP_SERVICE_OPERATION = "GetSpaceship";
-    public static final String CREATE_SPACESHIP_SERVICE_OPERATION = "CreateSpaceship";
-    public static final String PATCH_SPACESHIP_SERVICE_OPERATION = "PatchSpaceship";
-    public static final String PUT_SPACESHIP_SERVICE_OPERATION = "PutSpaceship";
-    public static final String DELETE_SPACESHIP_SERVICE_OPERATION = "DeleteSpaceship";
+    public static final String GET_SPACESHIPS_SERVICE_OPERATION = "getSpaceships";
+    public static final String GET_SPACESHIP_SERVICE_OPERATION = "getSpaceship";
+    public static final String CREATE_SPACESHIP_SERVICE_OPERATION = "createSpaceship";
+    public static final String PATCH_SPACESHIP_SERVICE_OPERATION = "patchSpaceship";
+    public static final String PUT_SPACESHIP_SERVICE_OPERATION = "putSpaceship";
+    public static final String DELETE_SPACESHIP_SERVICE_OPERATION = "deleteSpaceship";
     public static final String UNDEFINED_SERVICE_OPERATION = "Undefined";
 
     /**
@@ -66,6 +66,16 @@ public class SpaceShipManagerConstant {
     public static final String NAME_FIELD = "name";
     public static final String STATUS_FIELD = "status";
     public static final String TYPE_FIELD = "type";
+
+    /**
+     * OpenAPI
+     */
+    public static final String GET_SPACESHIPS_SERVICE_OPERATION_DESCRIPTION = "Synchronous operation that allows the retrieval of multiples persisted space ship resource entries.";
+    public static final String GET_SPACESHIP_SERVICE_OPERATION_DESCRIPTION = "Synchronous operation that allows the persistence of a single space ship resource entry.";
+    public static final String CREATE_SPACESHIP_SERVICE_OPERATION_DESCRIPTION = "Synchronous operation that allows the persistence of a single space ship resource entry.";
+    public static final String PATCH_SPACESHIP_SERVICE_OPERATION_DESCRIPTION = "Synchronous operation that allows the partial update of a single space ship persisted resource entry.";
+    public static final String PUT_SPACESHIP_SERVICE_OPERATION_DESCRIPTION = "Synchronous operation that allows the full update of a single space ship persisted resource entry.";
+    public static final String DELETE_SPACESHIP_SERVICE_OPERATION_DESCRIPTION = "Synchronous operation that allows the removal of a single space ship persisted resource entry.";
 
     /**
      * Miscellaneous
