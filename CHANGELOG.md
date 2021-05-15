@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1] - 2021-05-02
 ### Added
+* Standardized logging capabilities [#18](https://github.com/cf-training-springboot-2019/spaceship-manager/issues/18)
 * Response header enrichment [#16](https://github.com/cf-training-springboot-2019/spaceship-manager/issues/16)
 * Swagger OpenAPI specification [#14](https://github.com/cf-training-springboot-2019/spaceship-manager/issues/14)
 * Global exception handling [#12](https://github.com/cf-training-springboot-2019/spaceship-manager/issues/12)
