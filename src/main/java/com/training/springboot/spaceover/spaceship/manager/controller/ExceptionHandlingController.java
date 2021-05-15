@@ -5,6 +5,7 @@ import com.training.springboot.spaceover.spaceship.manager.domain.response.outbo
 import com.training.springboot.spaceover.spaceship.manager.error.InvalidResourceStatusException;
 import com.training.springboot.spaceover.spaceship.manager.utils.properties.SpaceShipManagerProperties;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.hateoas.Link;
@@ -28,6 +29,7 @@ import java.util.stream.Collectors;
 import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.*;
 import static java.util.stream.Collectors.joining;
 
+@Slf4j
 @RestControllerAdvice
 @RequiredArgsConstructor
 public class ExceptionHandlingController implements ResponseBodyAdvice<Object> {
@@ -75,6 +77,7 @@ public class ExceptionHandlingController implements ResponseBodyAdvice<Object> {
     }
 
     private ResponseEntity<OperationErrorResponse> buildErrorMessageResponseEntity(String msg, HttpStatus httpStatus) {
+        log.error(msg);
         return new ResponseEntity<>(
                 OperationErrorResponse.builder()
                         .message(msg)

@@ -39,24 +39,21 @@ public class SpaceShipManagerConstant {
     /**
      * Messages
      */
-    public static final String GET_SPACESHIPS_MSG = "Getting spaceships";
-    public static final String GET_SPACESHIPS_COUNT_MSG = "Got {} spaceships out of {}";
-    public static final String GET_SPACESHIP_MSG = "Getting spaceship";
+    public static final String GET_SPACESHIPS_REQUEST_MSG = "Getting spaceships";
+    public static final String GET_SPACESHIPS_RESULT_MSG = "Got {} spaceships out of {}";
+    public static final String GET_SPACESHIP_REQUEST_MSG = "Getting spaceship";
     public static final String GET_SPACESHIP_RESULT_MSG = "Got spaceship id::{}";
-    public static final String CREATE_SPACESHIP_MSG = "Creating spaceship";
+    public static final String CREATE_SPACESHIP_REQUEST_MSG = "Creating spaceship";
     public static final String CREATE_SPACESHIP_RESULT_MSG = "Created spaceship id::{}";
-    public static final String UPDATE_SPACESHIP_MSG = "Updating spaceship id::{}";
-    public static final String UPDATE_SPACESHIP_RESULT_MSG = "Updated spaceship id::{}";
-    public static final String DELETE_SPACESHIP_MSG = "Deleting spaceship id::{}";
+    public static final String PATCH_SPACESHIP_REQUEST_MSG = "Patching spaceship id::{}";
+    public static final String PATCH_SPACESHIP_RESULT_MSG = "Patched spaceship id::{}";
+    public static final String PUT_SPACESHIP_REQUEST_MSG = "Putting spaceship id::{}";
+    public static final String PUT_SPACESHIP_RESULT_MSG = "Put spaceship id::{}";
+    public static final String DELETE_SPACESHIP_REQUEST_MSG = "Deleting spaceship id::{}";
     public static final String DELETE_SPACESHIP_RESULT_MSG = "Deleted spaceship id::{}";
-    public static final String RESTOCK_SPACESHIP_MSG = "Restocking spaceship id::{}";
-    public static final String RESTOCK_SPACESHIP_RESULT_MSG = "Restocked spaceship id::{} by amount {}";
-    public static final String DISPATCH_SPACESHIP_MSG = "Dispatching spaceship id::{}";
-    public static final String DISPATCH_SPACESHIP_RESULT_MSG = "Dispatched spaceship id::{} by amount {}";
     public static final String LOGGING_HANDLER_INBOUND_MSG = "Received HTTP {} Request to {} at {}";
     public static final String LOGGING_HANDLER_OUTBOUND_MSG = "Responded with Status {} at {}";
     public static final String LOGGING_HANDLER_PROCESS_TIME_MSG = "Total processing time {} ms";
-    public static final String INVALID_MARKET_FIELD_MSG = "market field should match ISO 3166-1 alpha-2 specification";
     public static final String INVALID_EMPTY_OR_BLANK_STRING_MSG = "cannot be empty or blank";
     public static final String ENTITY_NOT_FOUND_MSG = "Entity %s id::{%s} not found.";
 
