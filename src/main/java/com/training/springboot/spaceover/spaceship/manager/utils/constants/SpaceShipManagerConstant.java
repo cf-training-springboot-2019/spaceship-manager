@@ -23,7 +23,7 @@ public class SpaceShipManagerConstant {
      * Header Names
      */
     public static final String TRACE_ID_HEADER = "X-Trace-Id";
-    public static final String SERVICE_OPERATION_HEADER = "Service-Operation";
+    public static final String SERVICE_OPERATION_HEADER = "X-Service-Operation";
     public static final String LINK_HEADER = "Link";
     public static final String PAGE_NUMBER_HEADER = "X-Page-Number";
     public static final String PAGE_SIZE_HEADER = "X-Page-Size";
