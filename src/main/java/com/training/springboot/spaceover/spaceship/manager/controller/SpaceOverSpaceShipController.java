@@ -62,8 +62,8 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
                 .type(SpaceShipType.fromName(type))
                 .build();
         Page<SpaceShip> spaceShipPage = spaceShipService.findAll(spaceShipSample, pageable);
-        log.info(GET_SPACESHIPS_RESULT_MSG, spaceShipPage.getNumberOfElements(), spaceShipPage.getTotalElements());
         PagedModel<GetSpaceShipResponse> response = pagedModelAssembler.toModel(spaceShipPage, modelAssembler);
+        log.info(GET_SPACESHIPS_RESULT_MSG, spaceShipPage.getNumberOfElements(), spaceShipPage.getTotalElements());
         return ResponseEntity.ok(response);
     }
 
@@ -73,9 +73,9 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
     @ServiceOperation(GET_SPACESHIP_SERVICE_OPERATION)
     @Operation(summary = GET_SPACESHIP_SERVICE_OPERATION, description = GET_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
     public ResponseEntity<GetSpaceShipResponse> getSpaceShip(@PathVariable("id") Long id) {
-        log.trace(GET_SPACESHIP_REQUEST_MSG);
+        log.trace(GET_SPACESHIP_REQUEST_MSG, id);
         GetSpaceShipResponse response = modelMapper.map(spaceShipService.findBydId(id), GetSpaceShipResponse.class);
-        log.info(GET_SPACESHIP_RESULT_MSG);
+        log.info(GET_SPACESHIP_RESULT_MSG, response.getId());
         return ResponseEntity.ok(response);
     }
 
@@ -87,7 +87,7 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
     public ResponseEntity createSpaceShip(@RequestBody @Valid CreateSpaceShipRequest request) {
         log.trace(CREATE_SPACESHIP_REQUEST_MSG);
         SpaceShip spaceShip = spaceShipService.save(modelMapper.map(request, SpaceShip.class));
-        log.info(CREATE_SPACESHIP_RESULT_MSG);
+        log.info(CREATE_SPACESHIP_RESULT_MSG, spaceShip.getId());
         return ResponseEntity.created(getResourceUri(spaceShip.getId())).build();
     }
 
@@ -96,10 +96,10 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
     @ServiceOperation(PATCH_SPACESHIP_SERVICE_OPERATION)
     @Operation(summary = PATCH_SPACESHIP_SERVICE_OPERATION, description = PATCH_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
     public ResponseEntity<PatchSpaceShipResponse> patchSpaceShip(@PathVariable("id") Long id, @RequestBody JsonPatch patch) {
-        log.trace(PATCH_SPACESHIP_REQUEST_MSG);
+        log.trace(PATCH_SPACESHIP_REQUEST_MSG, id);
         SpaceShip entity = spaceShipService.findBydId(id);
         entity = spaceShipService.update(applyPatch(patch, entity));
-        log.info(PATCH_SPACESHIP_RESULT_MSG);
+        log.info(PATCH_SPACESHIP_RESULT_MSG, id);
         return ResponseEntity.ok(modelMapper.map(entity, PatchSpaceShipResponse.class));
     }
 
@@ -108,10 +108,10 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
     @ServiceOperation(PUT_SPACESHIP_SERVICE_OPERATION)
     @Operation(summary = PUT_SPACESHIP_SERVICE_OPERATION, description = PUT_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
     public ResponseEntity<PutSpaceShipResponse> putSpaceShip(@PathVariable("id") Long id, @RequestBody @Valid PutSpaceShipRequest request) {
-        log.trace(PUT_SPACESHIP_REQUEST_MSG);
+        log.trace(PUT_SPACESHIP_REQUEST_MSG, id);
         request.setId(id);
         SpaceShip entity = spaceShipService.update(modelMapper.map(request, SpaceShip.class));
-        log.info(PUT_SPACESHIP_RESULT_MSG);
+        log.info(PUT_SPACESHIP_RESULT_MSG, id);
         return ResponseEntity.ok(modelMapper.map(entity, PutSpaceShipResponse.class));
     }
 
@@ -121,9 +121,9 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
     @ServiceOperation(DELETE_SPACESHIP_SERVICE_OPERATION)
     @Operation(summary = DELETE_SPACESHIP_SERVICE_OPERATION, description = DELETE_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
     public ResponseEntity deleteSpaceCrewMember(@PathVariable("id") Long id) {
-        log.trace(DELETE_SPACESHIP_REQUEST_MSG);
+        log.trace(DELETE_SPACESHIP_REQUEST_MSG, id);
         spaceShipService.deleteById(id);
-        log.trace(DELETE_SPACESHIP_RESULT_MSG);
+        log.trace(DELETE_SPACESHIP_RESULT_MSG, id);
         return ResponseEntity.noContent().build();
     }
 
