@@ -41,7 +41,7 @@ public class SpaceShipManagerConstant {
      */
     public static final String GET_SPACESHIPS_REQUEST_MSG = "Getting spaceships";
     public static final String GET_SPACESHIPS_RESULT_MSG = "Got {} spaceships out of {}";
-    public static final String GET_SPACESHIP_REQUEST_MSG = "Getting spaceship";
+    public static final String GET_SPACESHIP_REQUEST_MSG = "Getting spaceship id::{}";
     public static final String GET_SPACESHIP_RESULT_MSG = "Got spaceship id::{}";
     public static final String CREATE_SPACESHIP_REQUEST_MSG = "Creating spaceship";
     public static final String CREATE_SPACESHIP_RESULT_MSG = "Created spaceship id::{}";
