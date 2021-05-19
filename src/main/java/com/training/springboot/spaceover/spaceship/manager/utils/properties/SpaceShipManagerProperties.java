@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpaceShipManagerProperties {
 
-	@Value("${spring.application.name:spacemission-manager}")
-	private String applicationName;
+    @Value("${spring.application.name:spacemission-manager}")
+    private String applicationName;
 
-	@Value("${server.servlet.context-path:#{null}}")
-	private String servletContextPath;
+    @Value("${server.servlet.context-path:#{null}}")
+    private String servletContextPath;
 
-	@Value("${open-api.header.pagination.enabled:false}")
-	private boolean openApiHeaderPaginationEnabled;
+    @Value("${open-api.header.pagination.enabled:false}")
+    private boolean openApiHeaderPaginationEnabled;
 
 }

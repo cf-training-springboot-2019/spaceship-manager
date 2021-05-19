@@ -13,19 +13,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Profile("test")
 public class SpaceshipManagerWebConfiguration implements WebMvcConfigurer {
 
-	@Autowired
-	private MdcInitInterceptor mdcInitHandler;
+    @Autowired
+    private MdcInitInterceptor mdcInitHandler;
 
-	@Autowired
-	private HttpHeaderEnrichmentInterceptor headerEnrichmentHandlerInterceptor;
+    @Autowired
+    private HttpHeaderEnrichmentInterceptor headerEnrichmentHandlerInterceptor;
 
-	@Autowired
-	private HttpLoggerInterceptor httpLoggerInterceptor;
+    @Autowired
+    private HttpLoggerInterceptor httpLoggerInterceptor;
 
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(mdcInitHandler);
-		registry.addInterceptor(headerEnrichmentHandlerInterceptor);
-		registry.addInterceptor(httpLoggerInterceptor);
-	}
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(mdcInitHandler);
+        registry.addInterceptor(headerEnrichmentHandlerInterceptor);
+        registry.addInterceptor(httpLoggerInterceptor);
+    }
 
 }

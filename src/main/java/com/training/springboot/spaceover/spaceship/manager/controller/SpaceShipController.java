@@ -12,17 +12,17 @@ import org.springframework.http.ResponseEntity;
 
 public interface SpaceShipController {
 
-	ResponseEntity<PagedModel<GetSpaceShipResponse>> getSpaceShips(Pageable pageable, String name, String status,
-			String type);
+    ResponseEntity<PagedModel<GetSpaceShipResponse>> getSpaceShips(Pageable pageable, String name, String status,
+                                                                   String type);
 
-	ResponseEntity<GetSpaceShipResponse> getSpaceShip(Long id);
+    ResponseEntity<GetSpaceShipResponse> getSpaceShip(Long id);
 
-	ResponseEntity createSpaceShip(CreateSpaceShipRequest request);
+    ResponseEntity createSpaceShip(CreateSpaceShipRequest request);
 
-	ResponseEntity<PatchSpaceShipResponse> patchSpaceShip(Long id, JsonPatch request);
+    ResponseEntity<PatchSpaceShipResponse> patchSpaceShip(Long id, JsonPatch request);
 
-	ResponseEntity<PutSpaceShipResponse> putSpaceShip(Long id, PutSpaceShipRequest request);
+    ResponseEntity<PutSpaceShipResponse> putSpaceShip(Long id, PutSpaceShipRequest request);
 
-	ResponseEntity deleteSpaceCrewMember(Long id);
+    ResponseEntity deleteSpaceCrewMember(Long id);
 
 }
