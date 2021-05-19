@@ -1,0 +1,6 @@
+{
+  "name": "Millennium Falcon",
+  "status": "ACTIVE",
+  "type": "STAR_CRUISER",
+  "maxOccupancy": 10
+}

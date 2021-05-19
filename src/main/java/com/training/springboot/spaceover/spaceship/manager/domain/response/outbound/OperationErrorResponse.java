@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OperationErrorResponse {
 
-    private int code;
-    private String reason;
-    private String message;
-    private int status;
-    private String referenceError;
+	private int code;
+	private String reason;
+	private String message;
+	private int status;
+	private String referenceError;
 
 }

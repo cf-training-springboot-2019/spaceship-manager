@@ -14,23 +14,23 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @RequiredArgsConstructor
 public class SpaceshipManagerWebConfiguration {
 
-    @Bean
-    public WebMvcConfigurer webMvcConfigurationInitializer(MdcInitInterceptor mdcInitHandler,
-                                                           HttpHeaderEnrichmentInterceptor headerEnrichmentHandlerInterceptor,
-                                                           HttpLoggerInterceptor httpLoggerInterceptor) {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(mdcInitHandler);
-                registry.addInterceptor(headerEnrichmentHandlerInterceptor);
-                registry.addInterceptor(httpLoggerInterceptor);
-            }
-        };
-    }
+	@Bean
+	public WebMvcConfigurer webMvcConfigurationInitializer(MdcInitInterceptor mdcInitHandler,
+			HttpHeaderEnrichmentInterceptor headerEnrichmentHandlerInterceptor,
+			HttpLoggerInterceptor httpLoggerInterceptor) {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addInterceptors(InterceptorRegistry registry) {
+				registry.addInterceptor(mdcInitHandler);
+				registry.addInterceptor(headerEnrichmentHandlerInterceptor);
+				registry.addInterceptor(httpLoggerInterceptor);
+			}
+		};
+	}
 
-    @Bean
-    public ShallowEtagHeaderFilter shallowEtagHeaderFilter() {
-        return new ShallowEtagHeaderFilter();
-    }
+	@Bean
+	public ShallowEtagHeaderFilter shallowEtagHeaderFilter() {
+		return new ShallowEtagHeaderFilter();
+	}
 
 }
