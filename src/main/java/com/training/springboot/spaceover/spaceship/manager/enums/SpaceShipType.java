@@ -6,8 +6,9 @@ public enum SpaceShipType {
 
     public static SpaceShipType fromName(String name) {
         for (SpaceShipType e : values()) {
-            if (e.name().equals(name))
+            if (e.name().equals(name)) {
                 return e;
+            }
         }
         return null;
     }

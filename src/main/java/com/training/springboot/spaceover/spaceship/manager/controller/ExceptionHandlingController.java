@@ -54,7 +54,8 @@ public class ExceptionHandlingController implements ResponseBodyAdvice<Object> {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(InvalidResourceStatusException.class)
-    public ResponseEntity<OperationErrorResponse> handleBadRequestInvalidResourceStatus(InvalidResourceStatusException e) {
+    public ResponseEntity<OperationErrorResponse> handleBadRequestInvalidResourceStatus(
+            InvalidResourceStatusException e) {
         return buildErrorMessageResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 

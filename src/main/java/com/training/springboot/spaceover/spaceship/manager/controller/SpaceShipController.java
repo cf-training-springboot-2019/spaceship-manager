@@ -12,7 +12,8 @@ import org.springframework.http.ResponseEntity;
 
 public interface SpaceShipController {
 
-    ResponseEntity<PagedModel<GetSpaceShipResponse>> getSpaceShips(Pageable pageable, String name, String status, String type);
+    ResponseEntity<PagedModel<GetSpaceShipResponse>> getSpaceShips(Pageable pageable, String name, String status,
+                                                                   String type);
 
     ResponseEntity<GetSpaceShipResponse> getSpaceShip(Long id);
 

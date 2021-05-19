@@ -11,7 +11,7 @@ import java.net.URI;
 
 public abstract class SpaceOverGenericController {
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @SneakyThrows
     protected SpaceShip applyPatch(JsonPatch patch, SpaceShip targetSpaceShip) {

@@ -95,7 +95,8 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
     @PatchMapping(value = ID_URI, consumes = APPLICATION_JSON_PATCH)
     @ServiceOperation(PATCH_SPACESHIP_SERVICE_OPERATION)
     @Operation(summary = PATCH_SPACESHIP_SERVICE_OPERATION, description = PATCH_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
-    public ResponseEntity<PatchSpaceShipResponse> patchSpaceShip(@PathVariable("id") Long id, @RequestBody JsonPatch patch) {
+    public ResponseEntity<PatchSpaceShipResponse> patchSpaceShip(@PathVariable("id") Long id,
+                                                                 @RequestBody JsonPatch patch) {
         log.trace(PATCH_SPACESHIP_REQUEST_MSG, id);
         SpaceShip entity = spaceShipService.findBydId(id);
         entity = spaceShipService.update(applyPatch(patch, entity));
@@ -107,7 +108,8 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController imp
     @PutMapping(ID_URI)
     @ServiceOperation(PUT_SPACESHIP_SERVICE_OPERATION)
     @Operation(summary = PUT_SPACESHIP_SERVICE_OPERATION, description = PUT_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
-    public ResponseEntity<PutSpaceShipResponse> putSpaceShip(@PathVariable("id") Long id, @RequestBody @Valid PutSpaceShipRequest request) {
+    public ResponseEntity<PutSpaceShipResponse> putSpaceShip(@PathVariable("id") Long id,
+                                                             @RequestBody @Valid PutSpaceShipRequest request) {
         log.trace(PUT_SPACESHIP_REQUEST_MSG, id);
         request.setId(id);
         SpaceShip entity = spaceShipService.update(modelMapper.map(request, SpaceShip.class));

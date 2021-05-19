@@ -16,8 +16,9 @@ import static com.training.springboot.spaceover.spaceship.manager.utils.constant
 public class HttpLoggerInterceptor implements HandlerInterceptor {
 
     /**
-     * Simple stop watch, allowing for timing of a number of tasks, exposing total running time and running time for each named task.
-     * This is not meant to be used in a live production-environment, mainly due to the object is not designed to be thread-safe and does not use synchronization.
+     * Simple stop watch, allowing for timing of a number of tasks, exposing total running time and running time for each
+     * named task. This is not meant to be used in a live production-environment, mainly due to the object is not designed
+     * to be thread-safe and does not use synchronization.
      */
     StopWatch stopWatch;
 
