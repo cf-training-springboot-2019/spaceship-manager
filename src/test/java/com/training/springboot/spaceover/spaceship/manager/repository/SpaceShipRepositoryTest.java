@@ -3,6 +3,7 @@ package com.training.springboot.spaceover.spaceship.manager.repository;
 import com.training.springboot.spaceover.spaceship.manager.domain.model.SpaceShip;
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipStatus;
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipType;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -26,10 +27,12 @@ class SpaceShipRepositoryTest {
     private SpaceShipRepository spaceShipRepository;
 
     @Test
+    @DisplayName("Given no arguments, when invoking findAll method, then return Spaceship List")
     void findAllList() {
-
+        //No Arrange required
+        //Act
         List<SpaceShip> spaceShipList = spaceShipRepository.findAll();
-
+        //Assert
         //Assert collection
         assertNotNull(spaceShipList);
         assertEquals(3, spaceShipList.size());
@@ -61,8 +64,9 @@ class SpaceShipRepositoryTest {
     }
 
     @Test
+    @DisplayName("Given Spaceship and Pageable arguments, when invoking findAll method, then return Spaceship Page")
     void findAllPage() {
-
+        //Arrange
         SpaceShip spaceShipSample = SpaceShip.builder().build();
 
         ExampleMatcher exampleMatcher = ExampleMatcher.matching()
@@ -72,9 +76,10 @@ class SpaceShipRepositoryTest {
 
         Pageable pageRequest = PageRequest.of(1, 1);
 
+        //Act
         Page<SpaceShip> spaceShipPage = spaceShipRepository
                 .findAll(Example.of(spaceShipSample, exampleMatcher), pageRequest);
-
+        //Assert
         //Assert collection
         assertNotNull(spaceShipPage);
         assertEquals(1, spaceShipPage.getNumberOfElements());
@@ -94,10 +99,12 @@ class SpaceShipRepositoryTest {
     }
 
     @Test
+    @DisplayName("Given Spaceship identifier, when invoking findById method, then return Spaceship Optional")
     void findById() {
-
+        //No Arrange required
+        //Act
         Optional<SpaceShip> spaceShip = spaceShipRepository.findById(1L);
-
+        //Assert
         //Assert spaceship
         assertTrue(spaceShip.isPresent());
         assertNotNull(spaceShip.get());
@@ -110,18 +117,22 @@ class SpaceShipRepositoryTest {
     }
 
     @Test
+    @DisplayName("Given none-existent Spaceship identifier, when invoking findById method, then return empty Spaceship Optional")
     void findByIdReturnsOptional() {
-
+        //No Arrange required
+        //Act
         Optional<SpaceShip> spaceShip = spaceShipRepository.findById(10L);
-
+        //Assert
         //Assert spaceship
         assertFalse(spaceShip.isPresent());
 
     }
 
     @Test
+    @DisplayName("Given Spaceship, when invoking save method, then return Spaceship")
     void save() {
-
+        //No Arrange required
+        //Act
         SpaceShip spaceShip = SpaceShip.builder()
                 .name("Blue Mongoose")
                 .maxOccupancy(BigInteger.ONE)
@@ -145,23 +156,24 @@ class SpaceShipRepositoryTest {
     }
 
     @Test
+    @DisplayName("Given Spaceship with duplicate name, when invoking save method, then throw DataIntegrityViolationException")
     void saveThrowsDataIntegrityViolationException() {
-
+        //Arrange
         SpaceShip spaceShip = SpaceShip.builder()
                 .name("Millennium Falcon")
                 .maxOccupancy(BigInteger.TEN)
                 .status(SpaceShipStatus.INACTIVE)
                 .type(SpaceShipType.STAR_CRUISER)
                 .build();
-
-        // assert exception
+        //Act & Assert
+        //Assert exception
         assertThrows(DataIntegrityViolationException.class, () -> spaceShipRepository.save(spaceShip));
 
     }
 
     @Test
     void saveUpdate() {
-
+        //Arrange
         SpaceShip spaceShip = SpaceShip.builder()
                 .id(1L)
                 .name("Millennium Falcon")
@@ -169,9 +181,9 @@ class SpaceShipRepositoryTest {
                 .status(SpaceShipStatus.INACTIVE)
                 .type(SpaceShipType.STAR_CRUISER)
                 .build();
-
+        //Act
         spaceShip = spaceShipRepository.save(spaceShip);
-
+        //Assert
         //Assert spaceship
         assertNotNull(spaceShip);
         assertEquals(1L, spaceShip.getId());
@@ -186,10 +198,12 @@ class SpaceShipRepositoryTest {
     }
 
     @Test
+    @DisplayName("Given Spaceship identifier, when invoking deleteById method, then expect reduced collection size")
     void delete() {
-
+        //No Arrange required
+        //Act
         spaceShipRepository.deleteById(1L);
-
+        //Assert
         //Assert collection
         assertEquals(2, spaceShipRepository.count());
 

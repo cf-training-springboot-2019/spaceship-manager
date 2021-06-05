@@ -14,6 +14,7 @@ import com.training.springboot.spaceover.spaceship.manager.utils.interceptors.Ht
 import com.training.springboot.spaceover.spaceship.manager.utils.interceptors.MdcInitInterceptor;
 import com.training.springboot.spaceover.spaceship.manager.utils.properties.SpaceShipManagerProperties;
 import lombok.SneakyThrows;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.*;
+import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -101,8 +103,10 @@ class SpaceOverSpaceShipControllerTest {
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking GET /spaceships, then reply 200 response")
     void getSpaceShipsOk() {
 
+        //Arrange
         SpaceShip spaceShipOne = SpaceShip.builder()
                 .id(1L)
                 .name("Millennium Falcon")
@@ -165,6 +169,7 @@ class SpaceOverSpaceShipControllerTest {
         when(spaceShipService.findAll(spaceShipSample, pageRequest)).thenReturn(spaceShipPage);
         when(pagedModelAssembler.toModel(eq(spaceShipPage), any(PaginationModelAssembler.class))).thenReturn(response);
 
+        //Act & Assert
         mockMvc.perform(get("/spaceships")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -196,8 +201,9 @@ class SpaceOverSpaceShipControllerTest {
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking GET /spaceships/{id} with existent identifier, then reply 200 response")
     void getSpaceShipOk() {
-
+        //Arrange
         SpaceShip spaceShip = SpaceShip.builder()
                 .id(1L)
                 .name("Millennium Falcon")
@@ -216,7 +222,7 @@ class SpaceOverSpaceShipControllerTest {
 
         when(spaceShipService.findBydId(1L)).thenReturn(spaceShip);
         when(modelMapper.map(spaceShip, GetSpaceShipResponse.class)).thenReturn(response);
-
+        //Act & Assert
         mockMvc.perform(get("/spaceships/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -234,11 +240,12 @@ class SpaceOverSpaceShipControllerTest {
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking GET /spaceships/{id} with none-existent identifier, then reply 404 response")
     void getSpaceShipNotFound() {
-
+        //Arrange
         when(spaceShipService.findBydId(1L))
                 .thenThrow(new EntityNotFoundException(String.format(ENTITY_NOT_FOUND_MSG, SPACESHIP, 1L)));
-
+        //Arrange
         mockMvc.perform(get("/spaceships/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -255,8 +262,9 @@ class SpaceOverSpaceShipControllerTest {
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking POST /spaceships with valid request, then reply 201 response")
     void createSpaceShipCreated() {
-
+        //Arrange
         CreateSpaceShipRequest request = CreateSpaceShipRequest.builder()
                 .name("Millennium Falcon")
                 .maxOccupancy(BigInteger.TEN)
@@ -281,7 +289,7 @@ class SpaceOverSpaceShipControllerTest {
 
         when(modelMapper.map(request, SpaceShip.class)).thenReturn(spaceShip);
         when(spaceShipService.save(spaceShip)).thenReturn(persistedSpaceShip);
-
+        //Arrange
         mockMvc.perform(post("/spaceships")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -295,10 +303,11 @@ class SpaceOverSpaceShipControllerTest {
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking POST /spaceships with invalid request payload, then reply 400 response")
     void createSpaceShipBadRequest() {
-
+        //Arrange
         String responseContent = FileCopyUtils.copyToString(new FileReader(createSpaceShip400Request.getFile()));
-
+        //Act & Assert
         mockMvc.perform(post("/spaceships")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -310,14 +319,16 @@ class SpaceOverSpaceShipControllerTest {
                 .andExpect(jsonPath("$.reason").value(HttpStatus.BAD_REQUEST.getReasonPhrase()))
                 .andExpect(jsonPath("$.code").value(HttpStatus.BAD_REQUEST.value()))
                 .andExpect(jsonPath("$.status").value(HttpStatus.BAD_REQUEST.value()))
-                .andExpect(jsonPath("$.message").value("name must not be null; name must not be empty"));
+                .andExpect(jsonPath("$.message").value(containsString("name must not be null")))
+                .andExpect(jsonPath("$.message").value(containsString("name must not be empty")));
 
     }
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking POST /spaceships with duplicate Spaceship name, then reply 409 response")
     void createSpaceShipConflict() {
-
+        //Act & Assert
         CreateSpaceShipRequest request = CreateSpaceShipRequest.builder()
                 .name("Millennium Falcon")
                 .maxOccupancy(BigInteger.TEN)
@@ -334,7 +345,7 @@ class SpaceOverSpaceShipControllerTest {
         when(spaceShipService.save(spaceShip)).thenThrow(new DataIntegrityViolationException("Conflict"));
 
         String responseContent = FileCopyUtils.copyToString(new FileReader(createSpaceShip409Request.getFile()));
-
+        //Act & Assert
         mockMvc.perform(post("/spaceships")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -352,8 +363,9 @@ class SpaceOverSpaceShipControllerTest {
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking PATCH /spaceships/{id} with valid request, then reply 200 response")
     void patchSpaceShipOk() {
-
+        //Arrange
         SpaceShip spaceShip = SpaceShip.builder()
                 .id(1L)
                 .name("Millennium Falcon")
@@ -375,7 +387,7 @@ class SpaceOverSpaceShipControllerTest {
         when(spaceShipService.findBydId(1L)).thenReturn(spaceShip);
         when(spaceShipService.update(spaceShip)).thenReturn(spaceShip);
         when(modelMapper.map(spaceShip, PatchSpaceShipResponse.class)).thenReturn(response);
-
+        //Act & Assert
         mockMvc.perform(patch("/spaceships/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(APPLICATION_JSON_PATCH)
@@ -394,8 +406,9 @@ class SpaceOverSpaceShipControllerTest {
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking PUT /spaceships/{id} with valid request, then reply 200 response")
     void putSpaceShipOk() {
-
+        //Arrange
         PutSpaceShipRequest request = PutSpaceShipRequest.builder()
                 .id(1L)
                 .name("Millennium Falcon")
@@ -425,7 +438,7 @@ class SpaceOverSpaceShipControllerTest {
         when(modelMapper.map(request, SpaceShip.class)).thenReturn(spaceShip);
         when(spaceShipService.update(spaceShip)).thenReturn(spaceShip);
         when(modelMapper.map(spaceShip, PutSpaceShipResponse.class)).thenReturn(response);
-
+        //Act & Assert
         mockMvc.perform(put("/spaceships/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -444,10 +457,11 @@ class SpaceOverSpaceShipControllerTest {
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking PUT /spaceships/{id} with invalid request body, then reply 400 response")
     void putSpaceShipBadRequest() {
-
+        //Arrange
         String responseContent = FileCopyUtils.copyToString(new FileReader(putSpaceShip400Request.getFile()));
-
+        //Act & Assert
         mockMvc.perform(put("/spaceships/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -465,8 +479,10 @@ class SpaceOverSpaceShipControllerTest {
 
     @Test
     @SneakyThrows
+    @DisplayName("Given a consumer client, when invoking DELETE /spaceships/{id}, then reply 204 response")
     void deleteSpaceCrewMemberNoContent() {
-
+        //No Arrange required
+        //Act & Assert
         mockMvc.perform(delete("/spaceships/1"))
                 .andExpect(status().isNoContent())
                 .andExpect(header().exists(TRACE_ID_HEADER))
