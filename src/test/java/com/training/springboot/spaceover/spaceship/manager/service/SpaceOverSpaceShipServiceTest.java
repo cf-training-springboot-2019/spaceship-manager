@@ -4,6 +4,7 @@ import com.training.springboot.spaceover.spaceship.manager.domain.model.SpaceShi
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipStatus;
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipType;
 import com.training.springboot.spaceover.spaceship.manager.repository.SpaceShipRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,6 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.ENTITY_NOT_FOUND_MSG;
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.SPACESHIP;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -31,8 +34,10 @@ class SpaceOverSpaceShipServiceTest {
 
 
     @Test
+    @DisplayName("Given no arguments, when invoking findAll method, then return Spaceship List")
     void findAllList() {
 
+        //Arrange
         SpaceShip spaceShipOne = SpaceShip.builder()
                 .id(1L)
                 .name("Millennium Falcon")
@@ -59,8 +64,10 @@ class SpaceOverSpaceShipServiceTest {
 
         when(spaceShipRepository.findAll()).thenReturn(Arrays.asList(spaceShipOne, spaceShipTwo, spaceShipThree));
 
+        //Act
         List<SpaceShip> spaceShipList = spaceShipService.findAll();
 
+        //Assert
         //Assert collection
         assertNotNull(spaceShipList);
         assertEquals(3, spaceShipList.size());
@@ -92,8 +99,10 @@ class SpaceOverSpaceShipServiceTest {
     }
 
     @Test
+    @DisplayName("Given a Spaceship and Pageable arguments, when invoking findAll method, then return Spaceship Page")
     void findAllPage() {
 
+        //Arrange
         SpaceShip spaceShipOne = SpaceShip.builder()
                 .id(1L)
                 .name("Millennium Falcon")
@@ -129,11 +138,14 @@ class SpaceOverSpaceShipServiceTest {
         Example<SpaceShip> spaceShipExample = Example.of(entitySample, exampleMatcher);
 
         Pageable pageRequest = PageRequest.of(0, 3);
+
+        //Act
         when(spaceShipRepository.findAll(spaceShipExample, pageRequest))
                 .thenReturn(new PageImpl<>(spaceShipList, pageRequest, 5));
 
         Page<SpaceShip> spaceShipPage = spaceShipService.findAll(entitySample, pageRequest);
 
+        //Assert
         //Assert collection
         assertNotNull(spaceShipPage);
         assertEquals(3, spaceShipPage.getNumberOfElements());
@@ -167,8 +179,10 @@ class SpaceOverSpaceShipServiceTest {
     }
 
     @Test
+    @DisplayName("Given a valid Spaceship identifier argument, when invoking findById method, then return Spaceship")
     void findBydId() {
 
+        //Arrange
         SpaceShip spaceShip = SpaceShip.builder()
                 .id(1L)
                 .name("Millennium Falcon")
@@ -179,8 +193,10 @@ class SpaceOverSpaceShipServiceTest {
 
         when(spaceShipRepository.findById(1L)).thenReturn(Optional.of(spaceShip));
 
+        //Act
         spaceShip = spaceShipService.findBydId(1L);
 
+        //Assert
         //Assert spaceship
         assertNotNull(spaceShip);
         assertEquals(1L, spaceShip.getId());
@@ -192,18 +208,23 @@ class SpaceOverSpaceShipServiceTest {
     }
 
     @Test
+    @DisplayName("Given an invalid Spaceship identifier argument, when invoking findById method, then throw EntityNotFoundException")
     void findBydIdThrowEntityNotFound() {
 
-        when(spaceShipRepository.findById(1L)).thenThrow(new EntityNotFoundException());
+        //Arrange
+        when(spaceShipRepository.findById(1L)).thenReturn(Optional.empty());
 
+        //Act & Assert
         //Assert exception
-        assertThrows(EntityNotFoundException.class, () -> spaceShipService.findBydId(1L));
+        assertThrows(EntityNotFoundException.class, () -> spaceShipService.findBydId(1L), String.format(ENTITY_NOT_FOUND_MSG, SPACESHIP, "1"));
 
     }
 
     @Test
+    @DisplayName("Given a Spaceship, when invoking save method, then return Spaceship")
     void save() {
 
+        //Arrange
         SpaceShip spaceShip = SpaceShip.builder()
                 .name("Millennium Falcon")
                 .maxOccupancy(BigInteger.TEN)
@@ -220,8 +241,10 @@ class SpaceOverSpaceShipServiceTest {
 
         when(spaceShipRepository.save(spaceShip)).thenReturn(persistedSpaceShip);
 
+        //Act
         spaceShip = spaceShipService.save(spaceShip);
 
+        //Assert
         //Assert spaceship
         assertNotNull(spaceShip);
         assertEquals(1L, spaceShip.getId());
@@ -233,8 +256,9 @@ class SpaceOverSpaceShipServiceTest {
     }
 
     @Test
+    @DisplayName("Given a Spaceship, when invoking update method, then return Spaceship")
     void update() {
-
+        //Arrange
         SpaceShip spaceShip = SpaceShip.builder()
                 .id(1L)
                 .name("Millennium Falcon")
@@ -244,9 +268,9 @@ class SpaceOverSpaceShipServiceTest {
                 .build();
 
         when(spaceShipRepository.save(spaceShip)).thenReturn(spaceShip);
-
+        //Act
         spaceShip = spaceShipService.update(spaceShip);
-
+        //Assert
         //Assert spaceship
         assertNotNull(spaceShip);
         assertEquals(1L, spaceShip.getId());
@@ -258,10 +282,12 @@ class SpaceOverSpaceShipServiceTest {
     }
 
     @Test
+    @DisplayName("Given a Spaceship identifier, when invoking delete method, then invoke repository.deleteById")
     void deleteById() {
-
+        //No arrange required
+        //Act
         spaceShipService.deleteById(1L);
-
+        //Assert
         //verify method call count
         verify(spaceShipRepository, times(1)).deleteById(1L);
 
