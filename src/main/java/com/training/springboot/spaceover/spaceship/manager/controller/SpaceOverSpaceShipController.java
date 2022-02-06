@@ -30,21 +30,16 @@ import static com.training.springboot.spaceover.spaceship.manager.utils.constant
 import com.github.fge.jsonpatch.JsonPatch;
 import com.training.springboot.spaceover.spaceship.manager.domain.model.SpaceShip;
 import com.training.springboot.spaceover.spaceship.manager.domain.request.inbound.CreateSpaceShipRequest;
-import com.training.springboot.spaceover.spaceship.manager.domain.request.inbound.PutSpaceShipRequest;
 import com.training.springboot.spaceover.spaceship.manager.domain.response.outbound.PatchSpaceShipResponse;
-import com.training.springboot.spaceover.spaceship.manager.domain.response.outbound.PutSpaceShipResponse;
 import com.training.springboot.spaceover.spaceship.manager.service.SpaceShipService;
 import com.training.springboot.spaceover.spaceship.manager.utils.annotatations.ServiceOperation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
-import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Slf4j
