@@ -6,14 +6,14 @@ import com.training.springboot.spaceover.spaceship.manager.domain.request.inboun
 import com.training.springboot.spaceover.spaceship.manager.domain.response.outbound.GetSpaceShipResponse;
 import com.training.springboot.spaceover.spaceship.manager.domain.response.outbound.PatchSpaceShipResponse;
 import com.training.springboot.spaceover.spaceship.manager.domain.response.outbound.PutSpaceShipResponse;
+import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 
 public interface SpaceShipController {
 
-    ResponseEntity<PagedModel<GetSpaceShipResponse>> getSpaceShips(Pageable pageable, String name, String status,
-                                                                   String type);
+    ResponseEntity<List<GetSpaceShipResponse>> getSpaceShips();
 
     ResponseEntity<GetSpaceShipResponse> getSpaceShip(Long id);
 
@@ -23,6 +23,6 @@ public interface SpaceShipController {
 
     ResponseEntity<PutSpaceShipResponse> putSpaceShip(Long id, PutSpaceShipRequest request);
 
-    ResponseEntity deleteSpaceCrewMember(Long id);
+    ResponseEntity deleteSpaceship(Long id);
 
 }
