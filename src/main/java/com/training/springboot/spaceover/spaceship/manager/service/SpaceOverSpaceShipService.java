@@ -3,18 +3,9 @@ package com.training.springboot.spaceover.spaceship.manager.service;
 import com.training.springboot.spaceover.spaceship.manager.domain.model.SpaceShip;
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipStatus;
 import com.training.springboot.spaceover.spaceship.manager.repository.SpaceShipRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
-import java.util.List;
-
-import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.ENTITY_NOT_FOUND_MSG;
-import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.SPACESHIP;
 
 //LT#2 Implement SpaceShipService
 public class SpaceOverSpaceShipService implements SpaceShipService {

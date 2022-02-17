@@ -2,12 +2,11 @@ package com.training.springboot.spaceover.spaceship.manager.domain.response.outb
 
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipStatus;
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipType;
+import java.math.BigInteger;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigInteger;
 
 @Data
 @Builder
