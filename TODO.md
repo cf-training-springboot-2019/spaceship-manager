@@ -23,26 +23,26 @@ This session focus primarily in the following topics:
   - ~~LT1.4-Implement SimplifiedSpaceController putSpaceShip method~~
   - ~~LT1.5-Implement SimplifiedSpaceController deleteSpaceship method~~
   - ~~LT1.6-Implement SimplifiedSpaceController patchSpaceship method~~
-- LT2-Implement SpaceShipService
+- ~~LT2-Implement SpaceShipService~~
   [VR1](https://app.pluralsight.com/library/courses/spring-big-picture/table-of-contents)
   [VR2](https://app.pluralsight.com/library/courses/spring-boot-fundamentals/table-of-contents)
   [WR2](https://spring.io/guides/gs/rest-service/)
-  - LT2.1-Implement SpaceshipService save method
-  - LT2.2-Implement SpaceshipService findById method
-  - LT2.3-Implement SpaceshipService findAll method
-  - LT2.4-Implement SpaceshipService update method
-  - LT2.5-Implement SpaceshipService delete method
-- LT3-Integrate with SpaceShipRepository
+  - ~~LT2.1-Implement SpaceshipService save method~~
+  - ~~LT2.2-Implement SpaceshipService findById method~~
+  - ~~LT2.3-Implement SpaceshipService findAll method~~
+  - ~~LT2.4-Implement SpaceshipService update method~~
+  - ~~LT2.5-Implement SpaceshipService delete method~~
+- ~~LT3-Integrate with SpaceShipRepository~~
   [WR2](https://spring.io/guides/gs/rest-service/)
 
 
 ### Side activities
 
-- LT4-Migrate to SpaceShipRepository
+- ~~LT4-Migrate to SpaceShipController~~
   [WR3](https://www.baeldung.com/entity-to-and-from-dto-for-a-java-spring-application)
-  - LT4.1-Migrate to SpaceShipRepository createSpaceShip method
-  - LT4.2-Migrate to SpaceShipRepository getSpaceShip method
-  - LT4.3-Migrate to SpaceShipRepository getSpaceShips method
-  - LT4.4-Migrate to SpaceShipRepository putSpaceShip method
-  - LT4.5-Migrate to SpaceShipRepository deleteSpaceship method
-  - LT4.6-Migrate to SpaceShipRepository patchSpaceship method
+  - ~~LT4.1-Migrate to SpaceShipController createSpaceShip method~~
+  - ~~LT4.2-Migrate to SpaceShipController getSpaceShip method~~
+  - ~~LT4.3-Migrate to SpaceShipController getSpaceShips method~~
+  - ~~LT4.4-Migrate to SpaceShipController putSpaceShip method~~
+  - ~~LT4.5-Migrate to SpaceShipController deleteSpaceship method~~
+  - ~~LT4.6-Migrate to SpaceShipController patchSpaceship method~~
