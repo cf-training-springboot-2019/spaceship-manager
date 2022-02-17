@@ -7,8 +7,6 @@ import com.training.springboot.spaceover.spaceship.manager.domain.response.outbo
 import com.training.springboot.spaceover.spaceship.manager.domain.response.outbound.PatchSpaceShipResponse;
 import com.training.springboot.spaceover.spaceship.manager.domain.response.outbound.PutSpaceShipResponse;
 import java.util.List;
-import org.springframework.data.domain.Pageable;
-import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 
 public interface SpaceShipController {

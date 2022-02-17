@@ -2,19 +2,18 @@ package com.training.springboot.spaceover.spaceship.manager.domain.response.outb
 
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipStatus;
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipType;
+import java.math.BigInteger;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
 
-import java.math.BigInteger;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetSpaceShipResponse extends RepresentationModel<GetSpaceShipResponse> {
+public class GetSpaceShipResponse {
 
     private Long id;
 

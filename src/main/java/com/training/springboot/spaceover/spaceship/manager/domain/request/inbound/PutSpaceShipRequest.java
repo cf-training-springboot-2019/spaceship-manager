@@ -3,14 +3,13 @@ package com.training.springboot.spaceover.spaceship.manager.domain.request.inbou
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipStatus;
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipType;
+import java.math.BigInteger;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.PositiveOrZero;
-import java.math.BigInteger;
 
 @Data
 @Builder
