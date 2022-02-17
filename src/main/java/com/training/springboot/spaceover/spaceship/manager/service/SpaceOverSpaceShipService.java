@@ -4,6 +4,8 @@ import com.training.springboot.spaceover.spaceship.manager.domain.model.SpaceShi
 import com.training.springboot.spaceover.spaceship.manager.enums.SpaceShipStatus;
 import com.training.springboot.spaceover.spaceship.manager.repository.SpaceShipRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
@@ -17,9 +19,11 @@ import static com.training.springboot.spaceover.spaceship.manager.utils.constant
 import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.SPACESHIP;
 
 //LT#2 Implement SpaceShipService
+@Service
+@RequiredArgsConstructor
 public class SpaceOverSpaceShipService implements SpaceShipService {
 
-    private SpaceShipRepository spaceShipRepository;
+    private final SpaceShipRepository spaceShipRepository;
 
     @Override
     public Page<SpaceShip> findAll(SpaceShip entitySample, Pageable pageRequest) {
@@ -29,31 +33,33 @@ public class SpaceOverSpaceShipService implements SpaceShipService {
     @Override
     //LT#2-3 Implement SpaceShipService findAll method
     public List<SpaceShip> findAll() {
-        return null; //LT#3-3 Integrate with SpaceShipRepository findAll method
+        return spaceShipRepository.findAll(); //LT#3-3 Integrate with SpaceShipRepository findAll method
     }
 
     @Override
     //LT#2-2 Implement SpaceShipService findById method
     public SpaceShip findBydId(Long id) {
-        return null; // LT#3-2 Integrate with SpaceShipRepository findById method
+        return spaceShipRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException(String.format(ENTITY_NOT_FOUND_MSG, SPACESHIP, id))); // LT#3-2 Integrate with SpaceShipRepository findById method
     }
 
     @Override
     //LT#2-1 Implement SpaceShipService save method
     public SpaceShip save(SpaceShip entity) {
         entity.setStatus(SpaceShipStatus.ACTIVE);
-        return null; //LT#3-1 Integrate with SpaceShipRepository save method
+        return spaceShipRepository.save(entity); //LT#3-1 Integrate with SpaceShipRepository save method
     }
 
     @Override
     //LT#2-4 Implement SpaceShipService update method
     public SpaceShip update(SpaceShip entity) {
-        return null; //LT#3-1 Integrate with SpaceShipRepository save method
+        return spaceShipRepository.save(entity); //LT#3-1 Integrate with SpaceShipRepository save method
     }
 
     @Override
     //LT#2-5 Implement SpaceShipService delete method
     public void deleteById(Long id) {
+        spaceShipRepository.deleteById(id);
         //LT#3-4 Integrate with SpaceShipRepository deleteById method
     }
 }

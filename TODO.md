@@ -13,16 +13,16 @@ This session focus primarily in the following topics:
 
 ### Main activities
 
-- LT1-Implement SimplifiedSpaceShipController
+- ~~LT1-Implement SimplifiedSpaceShipController~~
   [VR1](https://app.pluralsight.com/library/courses/spring-big-picture/table-of-contents)
   [VR2](https://app.pluralsight.com/library/courses/spring-boot-fundamentals/table-of-contents)
   [WR1](https://www.baeldung.com/spring-boot-start#web-and-the-controller)
-  - LT1.1-Implement SimplifiedSpaceController createSpaceShip method 
-  - LT1.2-Implement SimplifiedSpaceController getSpaceShip method
-  - LT1.3-Implement SimplifiedSpaceController getSpaceShips method
-  - LT1.4-Implement SimplifiedSpaceController putSpaceShip method
-  - LT1.5-Implement SimplifiedSpaceController deleteSpaceship method
-  - LT1.6-Implement SimplifiedSpaceController patchSpaceship method
+  - ~~LT1.1-Implement SimplifiedSpaceController createSpaceShip method~~
+  - ~~LT1.2-Implement SimplifiedSpaceController getSpaceShip method~~
+  - ~~LT1.3-Implement SimplifiedSpaceController getSpaceShips method~~
+  - ~~LT1.4-Implement SimplifiedSpaceController putSpaceShip method~~
+  - ~~LT1.5-Implement SimplifiedSpaceController deleteSpaceship method~~
+  - ~~LT1.6-Implement SimplifiedSpaceController patchSpaceship method~~
 - LT2-Implement SpaceShipService
   [VR1](https://app.pluralsight.com/library/courses/spring-big-picture/table-of-contents)
   [VR2](https://app.pluralsight.com/library/courses/spring-boot-fundamentals/table-of-contents)
