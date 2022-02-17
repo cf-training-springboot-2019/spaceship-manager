@@ -38,11 +38,11 @@ This session focus primarily in the following topics:
 
 ### Side activities
 
-- LT4-Migrate to SpaceShipRepository
+- LT4-Migrate to SpaceShipController
   [WR3](https://www.baeldung.com/entity-to-and-from-dto-for-a-java-spring-application)
-  - LT4.1-Migrate to SpaceShipRepository createSpaceShip method
-  - LT4.2-Migrate to SpaceShipRepository getSpaceShip method
-  - LT4.3-Migrate to SpaceShipRepository getSpaceShips method
-  - LT4.4-Migrate to SpaceShipRepository putSpaceShip method
-  - LT4.5-Migrate to SpaceShipRepository deleteSpaceship method
+  - LT4.1-Migrate to SpaceShipController createSpaceShip method
+  - LT4.2-Migrate to SpaceShipController getSpaceShip method
+  - LT4.3-Migrate to SpaceShipController getSpaceShips method
+  - LT4.4-Migrate to SpaceShipController putSpaceShip method
+  - LT4.5-Migrate to SpaceShipController deleteSpaceship method
   - LT4.6-Migrate to SpaceShipRepository patchSpaceship method

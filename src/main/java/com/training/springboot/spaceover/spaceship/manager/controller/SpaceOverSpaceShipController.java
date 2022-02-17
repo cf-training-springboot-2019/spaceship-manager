@@ -43,7 +43,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Slf4j
-//LT#1 Implement SimplifiedSpaceController
+//LT#1 Implement SimplifiedSpaceShipController
 @Tag(name = SPACESHIPS, description = SPACESHIP_API_DESCRIPTION)
 public class SpaceOverSpaceShipController extends SpaceOverGenericController {
 
@@ -76,7 +76,7 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController {
     //LT#1-1 Implement SimplifiedSpaceController createSpaceShip method
     @ServiceOperation(CREATE_SPACESHIP_SERVICE_OPERATION)
     @Operation(summary = CREATE_SPACESHIP_SERVICE_OPERATION, description = CREATE_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
-    public ResponseEntity createSpaceShip(CreateSpaceShipRequest request) {
+    public ResponseEntity createSpaceShip(SpaceShip request) {
         log.trace(CREATE_SPACESHIP_REQUEST_MSG);
         SpaceShip spaceShip = null;//LT#2-1 Implement SpaceShipService save method
             log.info(CREATE_SPACESHIP_RESULT_MSG, spaceShip.getId());
@@ -86,13 +86,13 @@ public class SpaceOverSpaceShipController extends SpaceOverGenericController {
     //LT#1-6 Implement SimplifiedSpaceController patchSpaceShip method
     @ServiceOperation(PATCH_SPACESHIP_SERVICE_OPERATION)
     @Operation(summary = PATCH_SPACESHIP_SERVICE_OPERATION, description = PATCH_SPACESHIP_SERVICE_OPERATION_DESCRIPTION)
-    public ResponseEntity<PatchSpaceShipResponse> patchSpaceShip(Long id, JsonPatch patch) {
+    public ResponseEntity<SpaceShip> patchSpaceShip(Long id, JsonPatch patch) {
         log.trace(PATCH_SPACESHIP_REQUEST_MSG, id);
         SpaceShip entity = null; //LT#2-2 Implement SpaceShipService findBydId method
         entity = applyPatch(patch, entity);    
         entity = null; //LT#2-4 Implement SpaceShipService update method
         log.info(PATCH_SPACESHIP_RESULT_MSG, id);
-        return ResponseEntity.ok(modelMapper.map(entity, PatchSpaceShipResponse.class));
+        return ResponseEntity.ok(entity);
     }
 
     //LT#1-4 Implement SimplifiedSpaceController putSpaceShip method
