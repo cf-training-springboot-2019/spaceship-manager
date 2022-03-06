@@ -11,7 +11,9 @@ This session focus primarily in the following topics:
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.4.5/reference/htmlsingle/#boot-features-developing-web-applications)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.4.5/reference/htmlsingle/#boot-features-jpa-and-spring-data)
 
-### Main activities
+### Week One
+
+#### Main activities
 
 - ~~LT1-Implement SimplifiedSpaceShipController~~
   [VR1](https://app.pluralsight.com/library/courses/spring-big-picture/table-of-contents)
@@ -35,8 +37,7 @@ This session focus primarily in the following topics:
 - ~~LT3-Integrate with SpaceShipRepository~~
   [WR2](https://spring.io/guides/gs/rest-service/)
 
-
-### Side activities
+#### Side activities
 
 - ~~LT4-Migrate to SpaceShipController~~
   [WR3](https://www.baeldung.com/entity-to-and-from-dto-for-a-java-spring-application)
@@ -46,3 +47,19 @@ This session focus primarily in the following topics:
   - ~~LT4.4-Migrate to SpaceShipController putSpaceShip method~~
   - ~~LT4.5-Migrate to SpaceShipController deleteSpaceship method~~
   - ~~LT4.6-Migrate to SpaceShipController patchSpaceship method~~
+
+### Week Two
+#### Main activities
+#### Side activities
+
+### Week Three
+#### Main activities
+#### Side activities
+  
+### Week Two
+#### Main activities
+- ~~LT5-Integrate discovery client~~
+  [WR2](https://spring.io/guides/gs/rest-service/)
+- ~~LT5-Integrate configuration client~~
+  [WR2](https://spring.io/guides/gs/rest-service/)
+#### Side activities
