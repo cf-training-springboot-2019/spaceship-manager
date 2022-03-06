@@ -44,6 +44,19 @@
             <artifactId>spring-boot-starter-hateoas</artifactId>
             <groupId>org.springframework.boot</groupId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
 
         <dependency>
             <artifactId>h2</artifactId>
@@ -82,6 +95,17 @@
             <version>${springdoc-openapi.version}</version>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <description>A small Spring microservice aimed towards both governance, management and operational tasks applied
         towards for the various space ship resources within the Spaceover platform.
     </description>
@@ -100,6 +124,7 @@
         <json-patch.version>1.13</json-patch.version>
         <modelmapper.version>2.4.2</modelmapper.version>
         <springdoc-openapi.version>1.5.8</springdoc-openapi.version>
+        <spring-cloud.version>2020.0.5</spring-cloud.version>
     </properties>
 
     <version>0.0.1-SNAPSHOT</version>
