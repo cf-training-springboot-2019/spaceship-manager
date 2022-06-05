@@ -1,5 +1,8 @@
 package com.training.springboot.spaceover.spaceship.manager.utils.assemblers;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import com.training.springboot.spaceover.spaceship.manager.controller.SpaceOverSpaceShipController;
 import com.training.springboot.spaceover.spaceship.manager.domain.model.SpaceShip;
 import com.training.springboot.spaceover.spaceship.manager.domain.response.outbound.GetSpaceShipResponse;
@@ -8,9 +11,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
 @RequiredArgsConstructor

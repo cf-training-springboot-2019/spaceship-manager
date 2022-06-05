@@ -1,9 +1,9 @@
 package com.training.springboot.spaceover.spaceship.manager.error;
 
-import java.util.List;
-
 import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.COLON_WHITE_SPACE_DELIMITER;
 import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.WHITE_SPACE_DELIMITER;
+
+import java.util.List;
 
 public class InvalidResourceStatusException extends RuntimeException {
 

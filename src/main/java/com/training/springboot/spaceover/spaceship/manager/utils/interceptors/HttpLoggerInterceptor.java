@@ -1,15 +1,16 @@
 package com.training.springboot.spaceover.spaceship.manager.utils.interceptors;
 
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.LOGGING_HANDLER_INBOUND_MSG;
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.LOGGING_HANDLER_OUTBOUND_MSG;
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.LOGGING_HANDLER_PROCESS_TIME_MSG;
+
+import java.time.Instant;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.time.Instant;
-
-import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.*;
 
 @Slf4j
 @Component

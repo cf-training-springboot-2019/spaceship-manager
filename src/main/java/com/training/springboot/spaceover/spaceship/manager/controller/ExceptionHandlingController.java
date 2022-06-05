@@ -1,9 +1,21 @@
 package com.training.springboot.spaceover.spaceship.manager.controller;
 
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.LINK_HEADER;
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.PAGE_NUMBER_HEADER;
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.PAGE_SIZE_HEADER;
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.SEMI_COLON_DELIMITER;
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.TOTAL_ELEMENTS_HEADER;
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.TOTAL_PAGES_HEADER;
+import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.WHITE_SPACE_DELIMITER;
+import static java.util.stream.Collectors.joining;
+
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.training.springboot.spaceover.spaceship.manager.domain.response.outbound.OperationErrorResponse;
 import com.training.springboot.spaceover.spaceship.manager.error.InvalidResourceStatusException;
 import com.training.springboot.spaceover.spaceship.manager.utils.properties.SpaceShipManagerProperties;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
@@ -21,13 +33,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-
-import javax.persistence.EntityNotFoundException;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static com.training.springboot.spaceover.spaceship.manager.utils.constants.SpaceShipManagerConstant.*;
-import static java.util.stream.Collectors.joining;
 
 @Slf4j
 @RestControllerAdvice
